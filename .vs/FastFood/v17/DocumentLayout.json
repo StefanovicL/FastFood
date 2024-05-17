@@ -1,0 +1,213 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\models\\fastfoodcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\models\\fastfoodcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\fastfood.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\fastfood.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\models\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\models\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|c:\\users\\stefa\\desktop\\lazar\\fax\\diplomski\\fastfood\\fastfood\\models\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F97A1473-D3EF-461B-8FB6-926FE909D369}|FastFood\\FastFood.csproj|solutionrelative:fastfood\\models\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "FastFood\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "FastFood\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T16:34:48.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\appsettings.json",
+              "RelativeDocumentMoniker": "FastFood\\appsettings.json",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\appsettings.json",
+              "RelativeToolTip": "FastFood\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-03T16:27:52.984Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FastFood.csproj",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\FastFood.csproj",
+              "RelativeDocumentMoniker": "FastFood\\FastFood.csproj",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\FastFood.csproj",
+              "RelativeToolTip": "FastFood\\FastFood.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-03T14:33:43.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "FastFood\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Product.cs",
+              "RelativeToolTip": "FastFood\\Models\\Product.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\User.cs",
+              "RelativeDocumentMoniker": "FastFood\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\User.cs",
+              "RelativeToolTip": "FastFood\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwA4AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "FastFood\\Models\\Role.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Role.cs",
+              "RelativeToolTip": "FastFood\\Models\\Role.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "FastFood\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Properties\\launchSettings.json",
+              "RelativeToolTip": "FastFood\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-03-03T14:33:43.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Program.cs",
+              "RelativeDocumentMoniker": "FastFood\\Program.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Program.cs",
+              "RelativeToolTip": "FastFood\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Ingredient.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Ingredient.cs",
+              "RelativeDocumentMoniker": "FastFood\\Models\\Ingredient.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Ingredient.cs",
+              "RelativeToolTip": "FastFood\\Models\\Ingredient.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FastFoodContext.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\FastFoodContext.cs",
+              "RelativeDocumentMoniker": "FastFood\\Models\\FastFoodContext.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\FastFoodContext.cs",
+              "RelativeToolTip": "FastFood\\Models\\FastFoodContext.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAWwCMAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "FastFood\\Models\\Order.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Order.cs",
+              "RelativeToolTip": "FastFood\\Models\\Order.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Stock.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Stock.cs",
+              "RelativeDocumentMoniker": "FastFood\\Models\\Stock.cs",
+              "ToolTip": "C:\\Users\\stefa\\Desktop\\Lazar\\fax\\Diplomski\\FastFood\\FastFood\\Models\\Stock.cs",
+              "RelativeToolTip": "FastFood\\Models\\Stock.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-03T14:33:43.214Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
