@@ -56,7 +56,6 @@ namespace FastFood.Models
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.ProductID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Product");
             });
 
             modelBuilder.Entity<Product>(entity =>
