@@ -1,0 +1,298 @@
+<p-toast></p-toast>
+
+<div class="grid">
+  <div class="col-12">
+    <div class="card">
+      <div class="flex flex-column gap-3 mb-3">
+        <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center gap-3">
+          <h5 class="m-0">Pregled porudžbina</h5>
+
+          <div class="flex flex-column sm:flex-row flex-wrap gap-2 align-items-stretch sm:align-items-center w-full sm:w-auto">
+            <span class="p-input-icon-left w-full sm:w-14rem">
+              <i class="pi pi-search"></i>
+              <input
+                type="search"
+                pInputText
+                placeholder="Pretraga po broju ili statusu..."
+                class="w-full"
+                [(ngModel)]="globalFilterText"
+                (input)="applyFilters()">
+            </span>
+
+            <p-dropdown
+              [options]="dateFilterOptions"
+              [(ngModel)]="selectedDateFilter"
+              (onChange)="onDateFilterChange()"
+              placeholder="Period"
+              styleClass="w-full sm:w-12rem"
+              appendTo="body">
+            </p-dropdown>
+
+            <p-calendar
+              *ngIf="selectedDateFilter === 'custom'"
+              [(ngModel)]="customDateRange"
+              (onSelect)="onCustomDateRangeChange()"
+              selectionMode="range"
+              [readonlyInput]="true"
+              placeholder="Izaberite period"
+              dateFormat="dd.mm.yy"
+              styleClass="w-full sm:w-14rem"
+              appendTo="body">
+            </p-calendar>
+
+            <p-dropdown
+              [options]="statusFilterOptions"
+              [(ngModel)]="selectedStatus"
+              (onChange)="applyFilters()"
+              placeholder="Status"
+              styleClass="w-full sm:w-10rem"
+              appendTo="body">
+            </p-dropdown>
+          </div>
+        </div>
+
+        <div *ngIf="hasActiveFilters" class="flex flex-wrap align-items-center gap-2">
+          <span class="text-600 text-sm font-medium">Aktivni filteri:</span>
+
+          <span *ngIf="selectedDateFilter !== 'today'" class="filter-chip">
+            <i class="pi pi-calendar mr-1"></i>{{ dateFilterLabel }}
+          </span>
+
+          <span *ngIf="selectedStatus !== null" class="filter-chip">
+            <i class="pi pi-flag mr-1"></i>{{ statusFilterLabel }}
+          </span>
+
+          <span *ngIf="globalFilterText.trim()" class="filter-chip">
+            <i class="pi pi-search mr-1"></i>"{{ globalFilterText }}"
+          </span>
+
+          <button
+            pButton
+            pRipple
+            type="button"
+            label="Resetuj filtere"
+            icon="pi pi-filter-slash"
+            class="p-button-text p-button-sm"
+            (click)="resetFilters()">
+          </button>
+        </div>
+      </div>
+
+      <p-table
+        [value]="filteredOrders"
+        dataKey="id"
+        [expandedRowKeys]="expandedRows"
+        (onRowExpand)="onRowExpand($event)"
+        (onRowCollapse)="onRowCollapse($event)"
+        [paginator]="true"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 20, 50]"
+        [sortField]="'orderReceivedDateTime'"
+        [sortOrder]="-1"
+        responsiveLayout="scroll"
+        styleClass="p-datatable-gridlines orders-table">
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 3rem"></th>
+            <th pSortableColumn="orderNumber">Broj porudžbine <p-sortIcon field="orderNumber"></p-sortIcon></th>
+            <th pSortableColumn="orderReceivedDateTime">Vreme prijema <p-sortIcon field="orderReceivedDateTime"></p-sortIcon></th>
+            <th pSortableColumn="orderDeliveredDateTime">Vreme realizacije <p-sortIcon field="orderDeliveredDateTime"></p-sortIcon></th>
+            <th pSortableColumn="state" class="text-center">Status <p-sortIcon field="state"></p-sortIcon></th>
+            <th pSortableColumn="totalPrice" class="text-right">Ukupan iznos <p-sortIcon field="totalPrice"></p-sortIcon></th>
+            <th class="text-center" style="width: 4rem">Brisanje</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-order let-expanded="expanded">
+          <tr>
+            <td>
+              <button
+                type="button"
+                pButton
+                pRipple
+                [pRowToggler]="order"
+                class="p-button-text p-button-rounded p-button-plain w-2rem h-2rem"
+                [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
+              </button>
+            </td>
+
+            <td class="font-bold text-900 text-lg">#{{ order.orderNumber ?? order.id }}</td>
+
+            <td>
+              <span class="text-700 flex align-items-center">
+                <i class="pi pi-calendar mr-2 text-500 text-sm"></i>
+                {{ order.orderReceivedDateTime | date:'dd.MM.yyyy HH:mm' }}
+              </span>
+            </td>
+
+            <td>
+              <ng-container [ngSwitch]="order.state">
+                <ng-container *ngSwitchCase="'Ready'">
+                  <span class="text-blue-600 flex align-items-center font-medium">
+                    <i class="pi pi-clock mr-2 text-sm"></i>
+                    {{ getOrderStatusDateTime(order) | date:'dd.MM.yyyy HH:mm' }}
+                  </span>
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                  <span class="text-blue-600 flex align-items-center font-medium">
+                    <i class="pi pi-clock mr-2 text-sm"></i>
+                    {{ getOrderStatusDateTime(order) | date:'dd.MM.yyyy HH:mm' }}
+                  </span>
+                </ng-container>
+                <ng-container *ngSwitchCase="'Completed'">
+                  <span class="text-green-600 flex align-items-center font-medium">
+                    <i class="pi pi-check-circle mr-2 text-sm"></i>
+                    {{ getOrderStatusDateTime(order) | date:'dd.MM.yyyy HH:mm' }}
+                  </span>
+                </ng-container>
+                <ng-container *ngSwitchCase="3">
+                  <span class="text-green-600 flex align-items-center font-medium">
+                    <i class="pi pi-check-circle mr-2 text-sm"></i>
+                    {{ getOrderStatusDateTime(order) | date:'dd.MM.yyyy HH:mm' }}
+                  </span>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'Cancelled'">
+                  <span class="text-pink-600 flex align-items-center font-medium">
+                    <i class="pi pi-times-circle mr-2 text-sm"></i>
+                    {{ getOrderStatusDateTime(order) | date:'dd.MM.yyyy HH:mm' }}
+                  </span>
+                </ng-container>
+                <ng-container *ngSwitchCase="4">
+                  <span class="text-pink-600 flex align-items-center font-medium">
+                    <i class="pi pi-times-circle mr-2 text-sm"></i>
+                    {{ getOrderStatusDateTime(order) | date:'dd.MM.yyyy HH:mm' }}
+                  </span>
+                </ng-container>
+
+                <ng-container *ngSwitchDefault>
+                  <span class="text-400 font-semibold">-</span>
+                </ng-container>
+              </ng-container>
+            </td>
+
+            <td class="text-center">
+              <span
+                class="order-status-badge"
+                [class.status-created]="order.state === 'Created' || order.state === 1"
+                [class.status-ready]="order.state === 'Ready' || order.state === 2"
+                [class.status-completed]="order.state === 'Completed' || order.state === 3"
+                [class.status-cancelled]="order.state === 'Cancelled' || order.state === 4">
+                {{ getStateLabel(order.state) }}
+              </span>
+            </td>
+
+            <td class="text-right">
+              <span class="order-total-price font-bold text-900 text-lg">
+                {{ order.totalPrice | number:'1.2-2' }} RSD
+              </span>
+            </td>
+
+            <td class="text-center">
+              <button
+                pButton
+                pRipple
+                icon="pi pi-trash"
+                class="p-button-rounded p-button-text p-button-danger w-2rem h-2rem"
+                title="Obriši porudžbinu"
+                (click)="deleteOrder(order)">
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="rowexpansion" let-order>
+          <tr>
+            <td colspan="7">
+              <div class="p-3 surface-50 border-round">
+                <div class="flex align-items-center mb-3 text-sm">
+                  <i class="pi pi-shopping-bag mr-2 text-primary"></i>
+                  <span class="font-semibold text-800">Stavke porudžbine</span>
+                  <span class="text-500 text-sm ml-2">({{ order.productVariantOrders?.length || 0 }})</span>
+                </div>
+
+                <div *ngIf="!order.productVariantOrders?.length" class="p-3 text-center text-500">
+                  <i class="pi pi-info-circle mr-2"></i>Nema stavki u ovoj porudžbini.
+                </div>
+
+                <div *ngIf="order.productVariantOrders?.length" class="order-items-grid">
+                  <div class="items-grid-header hidden md:grid p-2 border-bottom-2 surface-border font-semibold text-sm text-600 uppercase">
+                    <div class="item-col-name">Proizvod</div>
+                    <div class="item-col-size text-center">Veličina</div>
+                    <div class="item-col-price text-right">Jedinična cena</div>
+                    <div class="item-col-qty text-center">Količina</div>
+                    <div class="item-col-subtotal text-right">Ukupno</div>
+                  </div>
+
+                  <div *ngFor="let po of order.productVariantOrders" class="order-item-row p-2 border-bottom-1 surface-border">
+                    <div class="item-col-name">
+                      <span class="item-cell-label md:hidden">Proizvod:</span>
+                      <span class="font-medium text-900">{{ po.productVariant?.productName }}</span>
+                      <div *ngIf="po.productVariant?.productVariantIngredients?.length" class="flex flex-wrap gap-1 mt-1">
+                        <span *ngFor="let pvi of po.productVariant.productVariantIngredients" class="ingredient-chip">
+                          {{ pvi.ingredient?.name }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="item-col-size md:text-center">
+                      <span class="item-cell-label md:hidden">Veličina:</span>
+                      <span *ngIf="po.productVariant?.size" class="size-chip font-semibold">{{ po.productVariant.size }}</span>
+                      <span *ngIf="!po.productVariant?.size" class="text-400">-</span>
+                    </div>
+
+                    <div class="item-col-price md:text-right">
+                      <span class="item-cell-label md:hidden">Cena:</span>
+                      <span class="text-600">{{ po.unitPrice | number:'1.2-2' }} RSD</span>
+                    </div>
+
+                    <div class="item-col-qty md:text-center">
+                      <span class="item-cell-label md:hidden">Količina:</span>
+                      <span class="qty-badge font-semibold">x{{ po.quantity }}</span>
+                    </div>
+
+                    <div class="item-col-subtotal md:text-right">
+                      <span class="item-cell-label md:hidden">Ukupno:</span>
+                      <span class="font-bold text-900">
+                        {{ (po.unitPrice * po.quantity) | number:'1.2-2' }} RSD
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-content-end align-items-center pt-3 mt-1 gap-2">
+                    <span class="text-700 font-medium">Ukupan iznos porudžbine:</span>
+                    <span class="text-xl font-bold text-primary">
+                      {{ order.totalPrice | number:'1.2-2' }} RSD
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="7" class="text-center p-5 text-500">
+              <i class="pi pi-inbox text-4xl mb-3 block"></i>
+              <span class="text-lg">Nema pronađenih porudžbina.</span>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE dialog -->
+<p-dialog [(visible)]="deleteOrderDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}">
+  <div class="flex align-items-center justify-content-center">
+    <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+    <span *ngIf="orderToDelete">Da li ste sigurni da želite trajno da obrišete porudžbinu <b>#{{ orderToDelete.orderNumber ?? orderToDelete.id }}</b>? Utrošeni sastojci će biti vraćeni u magacin.</span>
+  </div>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple icon="pi pi-times" class="p-button-text" label="No" (click)="deleteOrderDialog = false"></button>
+    <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Yes" (click)="confirmDeleteOrder()"></button>
+  </ng-template>
+</p-dialog>

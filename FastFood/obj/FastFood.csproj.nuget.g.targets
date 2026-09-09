@@ -2,5 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.apidescription.server\6.0.5\build\Microsoft.Extensions.ApiDescription.Server.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.apidescription.server\6.0.5\build\Microsoft.Extensions.ApiDescription.Server.targets')" />
+    <Import Project="$(NuGetPackageRoot)reinforced.typings\1.6.3\build\Reinforced.Typings.targets" Condition="Exists('$(NuGetPackageRoot)reinforced.typings\1.6.3\build\Reinforced.Typings.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.typescript.msbuild\5.5.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.typescript.msbuild\5.5.3\build\Microsoft.TypeScript.MSBuild.targets')" />
   </ImportGroup>
 </Project>

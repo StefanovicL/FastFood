@@ -1,0 +1,68 @@
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--primary-50, #eef2ff);
+  color: var(--primary-color);
+}
+
+.order-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: var(--surface-200);
+
+  &.status-created { background: #e0f2fe; color: #0369a1; }
+  &.status-ready { background: #e0e7ff; color: #4338ca; }
+  &.status-completed { background: #dcfce7; color: #15803d; }
+  &.status-cancelled { background: #fee2e2; color: #b91c1c; }
+}
+
+.items-grid-header,
+.order-item-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 0.8fr 1fr;
+  align-items: center;
+}
+
+.ingredient-chip {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--surface-200);
+  color: var(--text-color-secondary);
+}
+
+.size-chip,
+.qty-badge {
+  font-size: 0.8rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: var(--surface-200);
+}
+
+@media (max-width: 768px) {
+  .order-item-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .item-cell-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-color-secondary);
+    min-width: 6rem;
+    display: inline-block;
+  }
+}

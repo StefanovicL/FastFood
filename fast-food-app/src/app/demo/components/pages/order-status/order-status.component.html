@@ -1,0 +1,69 @@
+<p-toast></p-toast>
+
+<div class="grid order-status-page">
+  <div class="col-12">
+    <h4 class="page-title">Status porudžbina</h4>
+  </div>
+
+  <div class="col-12 lg:col-6">
+    <div class="status-column preparing-column">
+      <div class="status-column-header">
+        <i class="pi pi-spin pi-cog"></i>
+        <span>Priprema se</span>
+      </div>
+
+      <div class="orders-grid" *ngIf="preparingOrders.length; else noPreparing">
+        <div class="order-card" *ngFor="let order of preparingOrders">
+          <div class="order-card-number">#{{ order.orderNumber ?? order.id }}</div>
+
+          <div class="order-card-items">
+            <div class="order-item" *ngFor="let po of order.productVariantOrders">
+              <span class="order-item-name">{{ po.productVariant?.productName }}</span>
+              <span class="order-item-qty">x{{ po.quantity }}</span>
+            </div>
+          </div>
+
+          <div class="order-card-actions" *ngIf="canManageOrders">
+            <button pButton pRipple label="Otkaži" icon="pi pi-times" class="p-button-danger p-button-outlined" (click)="cancelOrder(order)"></button>
+            <button pButton pRipple label="Završeno" icon="pi pi-check" class="p-button-success" (click)="completeOrder(order)"></button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noPreparing>
+        <div class="empty-state">Nema porudžbina u pripremi.</div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="col-12 lg:col-6">
+    <div class="status-column ready-column">
+      <div class="status-column-header">
+        <i class="pi pi-check-circle"></i>
+        <span>Spremno</span>
+      </div>
+
+      <div class="orders-grid" *ngIf="readyOrders.length; else noReady">
+        <div class="order-card ready" *ngFor="let order of readyOrders">
+          <div class="order-card-number">#{{ order.orderNumber ?? order.id }}</div>
+
+          <div class="order-card-items">
+            <div class="order-item" *ngFor="let po of order.productVariantOrders">
+              <span class="order-item-name">{{ po.productVariant?.productName }}</span>
+              <span class="order-item-qty">x{{ po.quantity }}</span>
+            </div>
+          </div>
+
+          <div class="order-card-actions" *ngIf="canManageOrders">
+            <button pButton pRipple label="Otkaži" icon="pi pi-times" class="p-button-danger p-button-outlined" (click)="cancelOrder(order)"></button>
+            <button pButton pRipple label="Završeno" icon="pi pi-check" class="p-button-success" (click)="completeOrder(order)"></button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noReady>
+        <div class="empty-state">Nema spremnih porudžbina.</div>
+      </ng-template>
+    </div>
+  </div>
+</div>

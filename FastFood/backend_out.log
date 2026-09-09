@@ -1,0 +1,25 @@
+Using launch settings from C:\Users\stefa\Desktop\Lazar\fax\Diplomski\FastFood\FastFood\Properties\launchSettings.json...
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5250
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\stefa\Desktop\Lazar\fax\Diplomski\FastFood\FastFood
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[30000]
+      No store type was specified for the decimal property 'TotalPrice' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 6.0.20 initialized 'FastFoodContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.20' with options: None
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (27ms) [Parameters=[@__request_Dto_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [t].[Id], [t].[Password], [t].[Username], [u0].[Id], [u0].[Role_FK], [u0].[User_FK]
+      FROM (
+          SELECT TOP(1) [u].[Id], [u].[Password], [u].[Username]
+          FROM [User] AS [u]
+          WHERE [u].[Id] = @__request_Dto_Id_0
+      ) AS [t]
+      LEFT JOIN [UserRole] AS [u0] ON [t].[Id] = [u0].[User_FK]
+      ORDER BY [t].[Id]
