@@ -10,10 +10,19 @@ import { parseRole } from './role-access.config';
     providedIn: 'root'
 })
 export class AuthService {
+    private static readonly STORAGE_KEY = 'currentUser';
+
     private isSignedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     private currentUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
-    constructor(private router: Router) { }
+    constructor(private router: Router) {
+        // Restore persisted login state on app start (page reload) so the user isn't kicked back to Login.
+        const storedUser = localStorage.getItem(AuthService.STORAGE_KEY);
+        if (storedUser) {
+            this.currentUser.next(JSON.parse(storedUser));
+            this.isSignedIn.next(true);
+        }
+    }
 
     public setSignInStatus(isSignedIn: boolean): void {
         this.isSignedIn.next(isSignedIn);
@@ -37,6 +46,7 @@ export class AuthService {
 
     public setCurrentUser(user: User): void {
         this.currentUser.next(user);
+        localStorage.setItem(AuthService.STORAGE_KEY, JSON.stringify(user));
     }
 
     // Centralized role lookup - use this (or hasRole) instead of comparing user.userRoles[0].role.name strings elsewhere.
@@ -51,6 +61,7 @@ export class AuthService {
 
     public logout(): void {
         this.setSignInStatus(false);
+        localStorage.removeItem(AuthService.STORAGE_KEY);
         this.currentUser.next(null);
         this.router.navigate(['/auth/login']);
     }
