@@ -51,7 +51,7 @@ export class ListDemoComponent implements OnInit {
     if (!product.id || !variant?.id) return;
     const existing = this.cart.find(item => item.productVariantId === variant.id);
     if (existing) existing.quantity += 1;
-    else this.cart.push({ productId: product.id, productName: product.name ?? '', productDescription: product.description, productVariantId: variant.id, size: variant.size ?? 0, price: variant.price ?? 0, quantity: 1 });
+    else this.cart.push({ productId: product.id, productName: product.name ?? '', productDescription: product.description, productVariantId: variant.id, size: variant.size ?? 0, price: variant.price ?? 0, quantity: 1, storedFileName: variant.storedFileName });
     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Added To Cart', life: 3000 });
   }
   toggleView() { this.showCart = true; }
