@@ -6,7 +6,7 @@ import { eRole } from 'src/app/enums/eRole';
 const ROLE_ALLOWED_ROUTES: Record<eRole, string[]> = {
     [eRole.Admin]: [],
     [eRole.Kupac]: ['landing', 'uikit/list', 'pages/cart'],
-    [eRole.Radnik]: ['uikit/list', 'pages/crud', 'pages/cart', 'pages/order', 'pages/active-orders', 'pages/order-status', 'pages/ingredients'],
+    [eRole.Radnik]: ['uikit/list', 'pages/cart', 'pages/order', 'pages/order-status', 'pages/ingredients'],
     [eRole.Kuvar]: ['pages/active-orders', 'pages/ingredients'],
     [eRole.Pregled]: ['pages/order-status']
 };

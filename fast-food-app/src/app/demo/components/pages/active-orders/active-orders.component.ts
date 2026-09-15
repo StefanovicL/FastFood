@@ -14,7 +14,7 @@ import { eOrderState } from 'src/app/enums/eOrderState';
 })
 export class ActiveOrdersComponent implements OnInit, OnDestroy {
     orders: Order[] = [];
-    expandedRows: { [orderId: string]: boolean } = {};
+    expandedOrderId: number | null = null;
     elapsedTimes: { [orderId: number]: string } = {};
     private timerHandle: any;
     private hubSubscriptions: Subscription[] = [];
@@ -129,14 +129,16 @@ export class ActiveOrdersComponent implements OnInit, OnDestroy {
         }
     }
 
-    onRowExpand(event: { data: Order }) {
-        if (event.data.id)
-            this.expandedRows[event.data.id] = true;
+    isExpanded(order: Order): boolean {
+        return order.id === this.expandedOrderId;
     }
 
-    onRowCollapse(event: { data: Order }) {
-        if (event.data.id)
-            delete this.expandedRows[event.data.id];
+    toggleDetails(order: Order) {
+        if (!order.id) {
+            return;
+        }
+
+        this.expandedOrderId = this.isExpanded(order) ? null : order.id;
     }
 
     markAsReady(order: Order) {
