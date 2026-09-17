@@ -28,11 +28,10 @@ export class ListDemoComponent implements OnInit {
         const variant = this.getVariantBySize(product, this.selectedProductSize) ?? product.productVariants?.[0];
         if (product.id && variant?.id) this.selectedVariantByProductId[product.id] = variant.id;
       }
-      const hasSingles = this.products.some(product => this.getVariantBySize(product, 'Single'));
-      this.productsToDisplay = hasSingles ? this.products.filter(product => this.getVariantBySize(product, 'Single')) : [...this.products];
+      this.productsToDisplay = [...this.products];
     });
     this.productSizeOptions = (Object.keys(eProductSize) as Array<keyof typeof eProductSize>).filter(k => isNaN(Number(k))).map(k => ({ label: k === 'DoubleDouble' ? 'Double Double' : k, value: k }));
-    this.sortOptions = [{ label: 'Price High to Low', value: '!variantPrice' }, { label: 'Price Low to High', value: 'variantPrice' }];
+    this.sortOptions = [{ label: 'Cena: opadajuće', value: '!variantPrice' }, { label: 'Cena: rastuće', value: 'variantPrice' }];
   }
 
   getSelectedVariant(product: Product): ProductVariant | undefined {
@@ -52,7 +51,7 @@ export class ListDemoComponent implements OnInit {
     const existing = this.cart.find(item => item.productVariantId === variant.id);
     if (existing) existing.quantity += 1;
     else this.cart.push({ productId: product.id, productName: product.name ?? '', productDescription: product.description, productVariantId: variant.id, size: variant.size ?? 0, price: variant.price ?? 0, quantity: 1, storedFileName: variant.storedFileName });
-    this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Added To Cart', life: 3000 });
+    this.messageService.add({ severity: 'success', summary: 'Uspešno', detail: 'Proizvod je dodat u korpu', life: 3000 });
   }
   toggleView() { this.showCart = true; }
   onSortChange(event: any) { const value = event.value as string; this.sortOrder = value.startsWith('!') ? -1 : 1; this.sortField = value.replace('!', ''); this.applySort(); }

@@ -31,8 +31,8 @@ export class CartComponent implements OnInit {
         this.productSizes = Object.keys(eProductSize).filter(key => isNaN(Number(key)));
     
         this.sortOptions = [
-            { label: 'Price High to Low', value: '!price' },
-            { label: 'Price Low to High', value: 'price' }
+            { label: 'Cena: opadajuće', value: '!price' },
+            { label: 'Cena: rastuće', value: 'price' }
         ];
         
         this.getTotalPrice();

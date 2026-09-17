@@ -36,26 +36,26 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['landing']
                     }] : []),
                     {
-                        label: 'Auth',
+                        label: 'Nalog',
                         icon: 'pi pi-fw pi-user',
                         items: [
                             {
-                                label: 'Login',
+                                label: 'Prijava',
                                 icon: 'pi pi-fw pi-sign-in',
                                 routerLink: ['/auth/login']
                             },
                             {
-                                label: 'Register',
+                                label: 'Registracija',
                                 icon: 'pi pi-fw pi-sign-in',
                                 routerLink: ['/auth/register']
                             },
                             {
-                                label: 'Error',
+                                label: 'Greška',
                                 icon: 'pi pi-fw pi-times-circle',
                                 routerLink: ['/auth/error']
                             },
                             {
-                                label: 'Access Denied',
+                                label: 'Pristup odbijen',
                                 icon: 'pi pi-fw pi-lock',
                                 routerLink: ['/auth/access']
                             }
@@ -67,27 +67,27 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/pages/crud']
                     }] : []),
                     ...(allowed('pages/cart') ? [{
-                        label: 'Cart',
+                        label: 'Korpa',
                         icon: 'pi pi-fw pi-circle-off',
                         routerLink: ['/pages/cart']
                     }] : []),
                     ...(allowed('pages/active-orders') ? [{
-                        label: 'Active Orders',
+                        label: 'Aktivne porudžbine',
                         icon: 'pi pi-fw pi-clock',
                         routerLink: ['/pages/active-orders']
                     }] : []),
                     ...(allowed('pages/order-status') ? [{
-                        label: 'Order Status',
+                        label: 'Status porudžbina',
                         icon: 'pi pi-fw pi-desktop',
                         routerLink: ['/pages/order-status']
                     }] : []),
                     ...(allowed('pages/ingredients') ? [{
-                        label: 'Ingredients',
+                        label: 'Zalihe',
                         icon: 'pi pi-fw pi-box',
                         routerLink: ['/pages/ingredients']
                     }] : []),
                     ...(allowed('pages/users') ? [{
-                        label: 'Users',
+                        label: 'Korisnici',
                         icon: 'pi pi-fw pi-users',
                         routerLink: ['/pages/users']
                     }] : [])

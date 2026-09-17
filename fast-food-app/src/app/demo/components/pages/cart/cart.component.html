@@ -6,11 +6,11 @@
 			<p-dataView #dv [value]="productsInCart" [paginator]="true" [rows]="9" filterBy="productName" [sortField]="sortField" [sortOrder]="sortOrder" layout="list">
 				<ng-template pTemplate="header">
 					<div class="flex flex-column md:flex-row md:justify-content-between gap-2">
-						<p-dropdown [options]="sortOptions" placeholder="Sort By Price" (onChange)="onSortChange($event)"></p-dropdown>
+            <p-dropdown [options]="sortOptions" placeholder="Sortiraj po ceni" (onChange)="onSortChange($event)"></p-dropdown>
 						<span class="text-2xl">Pregled porudžbine</span>
 						<span class="p-input-icon-left">
                             <i class="pi pi-search"></i>
-                            <input type="search" pInputText placeholder="Search by Name" (input)="onFilter(dv, $event)">
+                            <input type="search" pInputText placeholder="Pretraži po nazivu" (input)="onFilter(dv, $event)">
                         </span>	
 					</div>
 				</ng-template>

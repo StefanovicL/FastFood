@@ -39,7 +39,7 @@ export class IngredientsComponent implements OnInit {
         this.ingredients = result ?? [];
       },
       error: () => {
-        this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: 'ERROR LOADING INGREDIENTS', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: 'Greška pri učitavanju zaliha', life: 3000 });
       }
     });
   }
@@ -87,11 +87,11 @@ export class IngredientsComponent implements OnInit {
 
     this.ingredientController.DeleteIngredient(id).subscribe({
       next: () => {
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Ingredient Deleted', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Uspešno', detail: 'Namirnica je obrisana', life: 3000 });
         this.initializeIngredients();
       },
       error: () => {
-        this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: 'ERROR DURING INGREDIENT DELETION', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: 'Greška pri brisanju namirnice', life: 3000 });
       }
     });
 
@@ -102,7 +102,7 @@ export class IngredientsComponent implements OnInit {
     this.submitted = true;
 
     if (!this.ingredient.name || this.ingredient.unit == null) {
-      this.messageService.add({ severity: 'warn', summary: 'Missing', detail: 'Name and unit are required', life: 3000 });
+      this.messageService.add({ severity: 'warn', summary: 'Nedostaju podaci', detail: 'Naziv i jedinica su obavezni', life: 3000 });
       return;
     }
 
@@ -115,8 +115,8 @@ export class IngredientsComponent implements OnInit {
       next: () => {
         this.messageService.add({
           severity: 'success',
-          summary: 'Successful',
-          detail: isUpdate ? 'Ingredient Updated' : 'Ingredient Created',
+          summary: 'Uspešno',
+          detail: isUpdate ? 'Namirnica je izmenjena' : 'Namirnica je kreirana',
           life: 3000
         });
 
@@ -126,8 +126,8 @@ export class IngredientsComponent implements OnInit {
       error: () => {
         this.messageService.add({
           severity: 'error',
-          summary: 'Unsuccessful',
-          detail: isUpdate ? 'ERROR DURING INGREDIENT UPDATE' : 'ERROR DURING INGREDIENT CREATION',
+          summary: 'Neuspešno',
+          detail: isUpdate ? 'Greška pri izmeni namirnice' : 'Greška pri kreiranju namirnice',
           life: 3000
         });
       }

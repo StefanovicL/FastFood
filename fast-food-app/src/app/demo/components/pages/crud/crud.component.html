@@ -4,13 +4,13 @@
       <p-toast></p-toast>
       <p-toolbar styleClass="mb-4">
         <ng-template pTemplate="left">
-          <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
-          <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts.length"></button>
+          <button pButton pRipple label="Novi proizvod" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+          <button pButton pRipple label="Obriši" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts.length"></button>
         </ng-template>
       </p-toolbar>
       <p-table #dt [value]="products" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [(selection)]="selectedProducts" selectionMode="multiple" dataKey="id" [globalFilterFields]="['name','description']">
-        <ng-template pTemplate="caption"><div class="flex justify-content-between"><h5 class="m-0">Manage Products</h5><span class="p-input-icon-left"><i class="pi pi-search"></i><input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search..." /></span></div></ng-template>
-        <ng-template pTemplate="header"><tr><th style="width:3rem"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th><th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th><th>Image</th><th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th><th>Size</th><th>Price</th><th></th></tr></ng-template>
+        <ng-template pTemplate="caption"><div class="flex justify-content-between"><h5 class="m-0">Upravljanje proizvodima</h5><span class="p-input-icon-left"><i class="pi pi-search"></i><input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Pretraži..." /></span></div></ng-template>
+        <ng-template pTemplate="header"><tr><th style="width:3rem"><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th><th pSortableColumn="name">Naziv <p-sortIcon field="name"></p-sortIcon></th><th>Slika</th><th pSortableColumn="description">Opis <p-sortIcon field="description"></p-sortIcon></th><th>Veličina</th><th>Cena</th><th>Akcije</th></tr></ng-template>
         <ng-template pTemplate="body" let-product><tr>
           <td><p-tableCheckbox [value]="product"></p-tableCheckbox></td>
           <td>{{ product.name }}</td>
@@ -22,22 +22,22 @@
         </tr></ng-template>
       </p-table>
     </div>
-    <p-dialog [(visible)]="productDialog" [style]="{width:'720px'}" header="Product Details" [modal]="true" class="p-fluid">
+    <p-dialog [(visible)]="productDialog" [style]="{width:'720px'}" header="Detalji proizvoda" [modal]="true" class="p-fluid">
       <ng-template pTemplate="content">
         <input id="productImageInput" type="file" accept="image/*" style="display:none" (change)="onImageFileSelected($event)" />
         <div class="mx-auto mb-5 flex align-items-center justify-content-center cursor-pointer" style="width:150px;height:150px;border:2px dashed #ced4da;border-radius:8px;overflow:hidden;position:relative" (click)="triggerImageUpload()">
           <img *ngIf="imagePreviewUrl" [src]="imagePreviewUrl" style="width:100%;height:100%;object-fit:cover" [alt]="product.name" />
           <img *ngIf="!imagePreviewUrl" [src]="getCurrentProductImage()" style="width:100%;height:100%;object-fit:cover" [alt]="product.name" (error)="$any($event.target).style.display='none'" />
-          <span *ngIf="!imagePreviewUrl" class="absolute flex flex-column align-items-center"><i class="pi pi-camera text-3xl"></i><small>Click to upload</small></span>
+          <span *ngIf="!imagePreviewUrl" class="absolute flex flex-column align-items-center"><i class="pi pi-camera text-3xl"></i><small>Dodaj sliku</small></span>
         </div>
-        <div class="field"><label for="name">Name</label><input pInputText id="name" [(ngModel)]="product.name" required /><small *ngIf="submitted && !product.name">Name is required.</small></div>
-        <div class="field"><label for="description">Description</label><textarea pInputTextarea id="description" [(ngModel)]="product.description" required rows="3"></textarea></div>
-        <div class="formgrid grid"><div class="field col-12 md:col-6"><label for="variantSize">Variant size</label><p-dropdown id="variantSize" [options]="productSizeOptions" [(ngModel)]="activeVariantSize" optionLabel="label" optionValue="value" (onChange)="onActiveVariantSizeChange($event.value)" appendTo="body"></p-dropdown></div><div class="field col-12 md:col-6"><label for="variantPrice">Price</label><p-inputNumber id="variantPrice" [ngModel]="activeVariant.price" (ngModelChange)="setActiveVariantPrice($event)" [min]="0" [useGrouping]="false"></p-inputNumber></div></div>
-        <div class="field"><label>Ingredients for selected variant</label><div class="surface-border border-1 border-round p-3"><div class="grid font-semibold"><div class="col-6">Ingredient</div><div class="col-3">In stock</div><div class="col-3">Qty</div></div><div class="grid align-items-center" *ngFor="let ing of ingredients; trackBy: trackByFn"><div class="col-6">{{ ing.name }}</div><div class="col-3" [ngClass]="{'text-red-500': (ing.quantity ?? 0) === 0}">{{ ing.quantity }} ({{ unitLabel(ing.unit) }})</div><div class="col-3"><p-inputNumber [ngModel]="getIngredientQuantityForActiveVariant(ing.id!)" (ngModelChange)="setIngredientQuantityForActiveVariant(ing.id!, $event)" [min]="0" [useGrouping]="false"></p-inputNumber></div></div></div></div>
+        <div class="field"><label for="name">Naziv</label><input pInputText id="name" [(ngModel)]="product.name" required /><small *ngIf="submitted && !product.name">Naziv je obavezan.</small></div>
+        <div class="field"><label for="description">Opis</label><textarea pInputTextarea id="description" [(ngModel)]="product.description" required rows="3"></textarea></div>
+        <div class="formgrid grid"><div class="field col-12 md:col-6"><label for="variantSize">Veličina varijante</label><p-dropdown id="variantSize" [options]="productSizeOptions" [(ngModel)]="activeVariantSize" optionLabel="label" optionValue="value" (onChange)="onActiveVariantSizeChange($event.value)" appendTo="body"></p-dropdown></div><div class="field col-12 md:col-6"><label for="variantPrice">Cena</label><p-inputNumber id="variantPrice" [ngModel]="activeVariant.price" (ngModelChange)="setActiveVariantPrice($event)" [min]="0" [useGrouping]="false"></p-inputNumber></div></div>
+        <div class="field"><label>Namirnice za izabranu varijantu</label><div class="surface-border border-1 border-round p-3"><div class="grid font-semibold"><div class="col-6">Namirnica</div><div class="col-3">Na stanju</div><div class="col-3">Količina</div></div><div class="grid align-items-center" *ngFor="let ing of ingredients; trackBy: trackByFn"><div class="col-6">{{ ing.name }}</div><div class="col-3" [ngClass]="{'text-red-500': (ing.quantity ?? 0) === 0}">{{ ing.quantity }} ({{ unitLabel(ing.unit) }})</div><div class="col-3"><p-inputNumber [ngModel]="getIngredientQuantityForActiveVariant(ing.id!)" (ngModelChange)="setIngredientQuantityForActiveVariant(ing.id!, $event)" [min]="0" [useGrouping]="false"></p-inputNumber></div></div></div></div>
       </ng-template>
-      <ng-template pTemplate="footer"><button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button><button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button></ng-template>
+      <ng-template pTemplate="footer"><button pButton pRipple label="Otkaži" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button><button pButton pRipple label="Sačuvaj" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button></ng-template>
     </p-dialog>
-    <p-dialog [(visible)]="deleteProductDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}"><div class="flex align-items-center justify-content-center"><i class="pi pi-exclamation-triangle mr-3 text-3xl"></i><span>Are you sure you want to delete <b>{{product.name}}</b>?</span></div><ng-template pTemplate="footer"><button pButton pRipple label="No" class="p-button-text" (click)="deleteProductDialog=false"></button><button pButton pRipple label="Yes" class="p-button-text" (click)="confirmDelete()"></button></ng-template></p-dialog>
-    <p-dialog [(visible)]="deleteProductsDialog" header="Confirm" [modal]="true" [style]="{width:'450px'}"><span>Are you sure you want to delete selected products?</span><ng-template pTemplate="footer"><button pButton pRipple label="No" class="p-button-text" (click)="deleteProductsDialog=false"></button><button pButton pRipple label="Yes" class="p-button-text" (click)="confirmDeleteSelected()"></button></ng-template></p-dialog>
+    <p-dialog [(visible)]="deleteProductDialog" header="Potvrda" [modal]="true" [style]="{width:'450px'}"><div class="flex align-items-center justify-content-center"><i class="pi pi-exclamation-triangle mr-3 text-3xl"></i><span>Da li ste sigurni da želite da obrišete <b>{{product.name}}</b>?</span></div><ng-template pTemplate="footer"><button pButton pRipple label="Ne" class="p-button-text" (click)="deleteProductDialog=false"></button><button pButton pRipple label="Da" class="p-button-text" (click)="confirmDelete()"></button></ng-template></p-dialog>
+    <p-dialog [(visible)]="deleteProductsDialog" header="Potvrda" [modal]="true" [style]="{width:'450px'}"><span>Da li ste sigurni da želite da obrišete izabrane proizvode?</span><ng-template pTemplate="footer"><button pButton pRipple label="Ne" class="p-button-text" (click)="deleteProductsDialog=false"></button><button pButton pRipple label="Da" class="p-button-text" (click)="confirmDeleteSelected()"></button></ng-template></p-dialog>
   </div>
 </div>

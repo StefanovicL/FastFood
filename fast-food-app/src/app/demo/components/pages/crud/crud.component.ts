@@ -45,7 +45,7 @@ export class CrudComponent implements OnInit {
     this.productSizeOptions = (Object.keys(eProductSize) as Array<keyof typeof eProductSize>)
       .filter(k => isNaN(Number(k)))
       .map(k => ({ label: k === 'DoubleDouble' ? 'Double Double' : k, value: k }));
-    this.cols = [{ field: 'name', header: 'Name' }, { field: 'description', header: 'Description' }];
+    this.cols = [{ field: 'name', header: 'Naziv' }, { field: 'description', header: 'Opis' }];
   }
 
   initializeIngredients() {
@@ -177,8 +177,8 @@ export class CrudComponent implements OnInit {
     const ids = this.selectedProducts.map(p => this.getSelectedVariantId(p)).filter((id): id is number => !!id);
     if (!ids.length) { this.selectedProducts = []; return; }
     this.productController.BulkDeleteProductVariants(ids).subscribe({
-      next: () => { this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 }); this.selectedProducts = []; this.initializeProducts(); },
-      error: () => this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: 'ERROR DURING PRODUCT DELETION', life: 3000 })
+      next: () => { this.messageService.add({ severity: 'success', summary: 'Uspešno', detail: 'Proizvodi su obrisani', life: 3000 }); this.selectedProducts = []; this.initializeProducts(); },
+      error: () => this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: 'Greška pri brisanju proizvoda', life: 3000 })
     });
   }
 
@@ -186,12 +186,12 @@ export class CrudComponent implements OnInit {
     this.deleteProductDialog = false;
     const id = this.pendingProductVariantId;
     if (!id) {
-      this.messageService.add({ severity: 'warn', summary: 'Unable to delete', detail: 'The selected product variant was not found.', life: 3000 });
+      this.messageService.add({ severity: 'warn', summary: 'Brisanje nije moguće', detail: 'Izabrana varijanta proizvoda nije pronađena.', life: 3000 });
       return;
     }
     this.productController.DeleteProductVariant(id).subscribe({
-      next: () => { this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 }); this.initializeProducts(); },
-      error: () => this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: 'ERROR DURING PRODUCT DELETION', life: 3000 })
+      next: () => { this.messageService.add({ severity: 'success', summary: 'Uspešno', detail: 'Proizvod je obrisan', life: 3000 }); this.initializeProducts(); },
+      error: () => this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: 'Greška pri brisanju proizvoda', life: 3000 })
     });
     this.product = {};
     this.pendingProductVariantId = undefined;
@@ -204,12 +204,12 @@ export class CrudComponent implements OnInit {
   saveProduct() {
     this.submitted = true;
     if (!this.product.name || !this.product.description) {
-      this.messageService.add({ severity: 'warn', summary: 'Missing', detail: 'Name and description are required', life: 3000 });
+      this.messageService.add({ severity: 'warn', summary: 'Nedostaju podaci', detail: 'Naziv i opis su obavezni', life: 3000 });
       return;
     }
     this.product.productVariants = (this.product.productVariants ?? []).filter(v => (v.price ?? 0) > 0 || (v.productVariantIngredients?.length ?? 0) > 0);
     if (!this.product.productVariants.length) {
-      this.messageService.add({ severity: 'warn', summary: 'Missing', detail: 'At least one variant with price or ingredients is required', life: 3000 });
+      this.messageService.add({ severity: 'warn', summary: 'Nedostaju podaci', detail: 'Potrebna je bar jedna varijanta sa cenom ili namirnicama', life: 3000 });
       return;
     }
     const isUpdate = !!this.product.id;
@@ -218,7 +218,7 @@ export class CrudComponent implements OnInit {
       next: saved => {
         const productId = saved?.id ?? this.product.id;
         const finish = () => {
-          this.messageService.add({ severity: 'success', summary: 'Successful', detail: isUpdate ? 'Product Updated' : 'Product Created', life: 3000 });
+          this.messageService.add({ severity: 'success', summary: 'Uspešno', detail: isUpdate ? 'Proizvod je izmenjen' : 'Proizvod je kreiran', life: 3000 });
           this.productDialog = false;
           this.selectedImageFile = null;
           this.imagePreviewUrl = null;
@@ -228,10 +228,10 @@ export class CrudComponent implements OnInit {
           const formData = new FormData();
           formData.append('id', String(productId));
           formData.append('file', this.selectedImageFile);
-          this.http.post(`${environment.apiUrl}/Product/UploadProductImage`, formData).subscribe({ next: finish, error: () => { this.messageService.add({ severity: 'warn', summary: 'Image upload failed', detail: 'Product saved but image could not be uploaded.', life: 4000 }); finish(); } });
+          this.http.post(`${environment.apiUrl}/Product/UploadProductImage`, formData).subscribe({ next: finish, error: () => { this.messageService.add({ severity: 'warn', summary: 'Slika nije poslata', detail: 'Proizvod je sačuvan, ali slika nije mogla da se pošalje.', life: 4000 }); finish(); } });
         } else finish();
       },
-      error: () => this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: isUpdate ? 'ERROR DURING PRODUCT UPDATE' : 'ERROR DURING PRODUCT CREATION', life: 3000 })
+      error: () => this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: isUpdate ? 'Greška pri izmeni proizvoda' : 'Greška pri kreiranju proizvoda', life: 3000 })
     });
   }
 

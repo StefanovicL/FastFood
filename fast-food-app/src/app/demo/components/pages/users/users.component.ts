@@ -37,7 +37,7 @@ export class UsersComponent implements OnInit {
         this.users = result ?? [];
       },
       error: () => {
-        this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: 'ERROR LOADING USERS', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: 'Greška pri učitavanju korisnika', life: 3000 });
       }
     });
   }
@@ -49,7 +49,7 @@ export class UsersComponent implements OnInit {
         this.roleOptions = this.roles.map(r => ({ label: r.name, value: r.id }));
       },
       error: () => {
-        this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: 'ERROR LOADING ROLES', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: 'Greška pri učitavanju uloga', life: 3000 });
       }
     });
   }
@@ -95,11 +95,11 @@ export class UsersComponent implements OnInit {
 
     this.userController.DeleteUser(id).subscribe({
       next: () => {
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'User Deleted', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Uspešno', detail: 'Korisnik je obrisan', life: 3000 });
         this.initializeUsers();
       },
       error: () => {
-        this.messageService.add({ severity: 'error', summary: 'Unsuccessful', detail: 'ERROR DURING USER DELETION', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Neuspešno', detail: 'Greška pri brisanju korisnika', life: 3000 });
       }
     });
 
@@ -132,8 +132,8 @@ export class UsersComponent implements OnInit {
       next: () => {
         this.messageService.add({
           severity: 'success',
-          summary: 'Successful',
-          detail: isUpdate ? 'User Updated' : 'User Created',
+          summary: 'Uspešno',
+          detail: isUpdate ? 'Korisnik je izmenjen' : 'Korisnik je kreiran',
           life: 3000
         });
 
@@ -143,8 +143,8 @@ export class UsersComponent implements OnInit {
       error: () => {
         this.messageService.add({
           severity: 'error',
-          summary: 'Unsuccessful',
-          detail: isUpdate ? 'ERROR DURING USER UPDATE' : 'ERROR DURING USER CREATION',
+          summary: 'Neuspešno',
+          detail: isUpdate ? 'Greška pri izmeni korisnika' : 'Greška pri kreiranju korisnika',
           life: 3000
         });
       }
