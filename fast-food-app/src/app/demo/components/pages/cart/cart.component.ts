@@ -104,6 +104,8 @@ export class CartComponent implements OnInit {
         this.orderController.CreateOrder(order).subscribe({
             next: (createdOrder: Order) => {
                 this.confirmedOrderNumber = createdOrder?.orderNumber ?? createdOrder?.id;
+                this.productsInCart.splice(0, this.productsInCart.length);
+                this.totalPrice = 0;
                 this.orderConfirmationDialog = true;
             },
             error: (error) => {
